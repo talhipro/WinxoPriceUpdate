@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WinxoPriceUpdate.Views.Login"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:WinxoPriceUpdate.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="White">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    Margin="0,0,30,30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image
+                        HeightRequest="200"
+                        Source="winxo_logo.png"
+                        WidthRequest="200" />
+                </StackLayout>
+                <StackLayout
+                    Margin="0,30"
+                    Padding="30,50"
+                    BackgroundColor="#FED300"
+                    Spacing="10"
+                    VerticalOptions="End">
+
+                    <controls:CustomEntry
+                        x:Name="UserName"
+                        Placeholder="Nom d'utilisateur"
+                        Text="email1@gmail.com"
+                        TextColor="Black" />
+
+                    <controls:CustomEntry
+                        x:Name="Password"
+                        IsPassword="True"
+                        Placeholder="Mot de passe"
+                        Text="123456"
+                        TextColor="Black" />
+                    <Button
+                        Margin="0,20,0,0"
+                        BackgroundColor="White"
+                        BorderRadius="8"
+                        Clicked="Login_Clicked"
+                        FontAttributes="Bold"
+                        Text="Se connecter"
+                        TextColor="#96C11F" />
+                    <!--<Label
+                        HorizontalOptions="Center"
+                        Text="Mot de passe oublié !"
+                        TextColor="White"
+                        TextDecorations="Underline" />-->
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

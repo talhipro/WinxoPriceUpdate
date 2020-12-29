@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page:BasePage
+    x:Class="WinxoPriceUpdate.Views.PanelSaisie"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Page="clr-namespace:WinxoPriceUpdate.Views.Base"
+    xmlns:controls="clr-namespace:WinxoPriceUpdate.Controls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label
+                Margin="0,0,25,0"
+                FontAttributes="Bold"
+                FontSize="30"
+                HorizontalOptions="CenterAndExpand"
+                Text="Panel de saisie"
+                TextColor="White"
+                VerticalOptions="Center" />
+            <Image
+                Margin="0,0,10,0"
+                HeightRequest="30"
+                HorizontalOptions="End"
+                Source="logout.png"
+                WidthRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Logout_Clicked" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#f2f2f2">
+                <StackLayout
+                    x:Name="Header"
+                    BackgroundColor="#96C11F"
+                    IsVisible="True">
+                    <Frame BackgroundColor="Transparent">
+                        <StackLayout Orientation="Horizontal">
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                Source="back_arrow.png"
+                                WidthRequest="25">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Back_Clicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="30"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Panel de saisie"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+                            <Image
+                                Margin="0,0,10,0"
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                Source="logout.png"
+                                WidthRequest="25">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Logout_Clicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout x:Name="Content" Margin="10,20">
+                    <Label
+                        Margin="0,10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Prix décidé à être appliqués lors du prochain cycle de changement de prix"
+                        TextColor="#646aa6" />
+                    <Frame CornerRadius="8">
+                        <StackLayout>
+                            <StackLayout BindableLayout.ItemsSource="{Binding PrixTypes}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                Text="{Binding nom}"
+                                                TextColor="#0099D3" />
+                                            <controls:CustomRoundedEntry
+                                                Keyboard="Numeric"
+                                                Placeholder="0.00"
+                                                Text="{Binding montant, Mode=TwoWay}"
+                                                TextChanged="CustomRoundedEntry_TextChanged" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                            <!--<StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Text="Gasoil 10"
+                                    TextColor="#0099D3" />
+                                <controls:CustomRoundedEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="0.00"
+                                    Text="{Binding DemandeInputs.gasoilprix}"
+                                    TextChanged="CustomRoundedEntry_TextChanged" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Text="Super SP"
+                                    TextColor="#0099D3" />
+                                <controls:CustomRoundedEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="0.00"
+                                    Text="{Binding DemandeInputs.superprix}"
+                                    TextChanged="CustomRoundedEntry_TextChanged" />
+                            </StackLayout>-->
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Text="Date et heure d'application"
+                                    TextColor="#0099D3" />
+                                <StackLayout Orientation="Horizontal">
+                                    <!--<controls:CustomRoundedEntry Placeholder="00/00/0000 00:00" />-->
+                                    <DatePicker Date="{Binding DateInput}" Format="dd/MM/yyyy" />
+                                    <TimePicker Format="HH:mm" Time="{Binding TimeInput}" />
+                                </StackLayout>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Button
+                            BackgroundColor="#96C11F"
+                            Command="{Binding SubmitFormCommande}"
+                            CornerRadius="8"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Confirmer"
+                            TextColor="White" />
+                        <Button
+                            BackgroundColor="#FED300"
+                            Clicked="Cancel_Clicked"
+                            CornerRadius="8"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Annuler"
+                            TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</Page:BasePage>

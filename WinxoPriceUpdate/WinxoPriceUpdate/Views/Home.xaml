@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page:BasePage
+    x:Class="WinxoPriceUpdate.Views.Home"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Page="clr-namespace:WinxoPriceUpdate.Views.Base"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label
+                Margin="0"
+                FontAttributes="Bold"
+                FontSize="30"
+                HorizontalOptions="CenterAndExpand"
+                Text="Accueil"
+                TextColor="White"
+                VerticalOptions="Center" />
+            <Image
+                Margin="0,0,10,0"
+                HeightRequest="30"
+                HorizontalOptions="End"
+                Source="logout.png"
+                WidthRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Logout_Clicked" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#f2f2f2">
+                <!--#region Header-->
+                <StackLayout
+                    x:Name="Header"
+                    BackgroundColor="#96C11F"
+                    IsVisible="True">
+                    <Frame BackgroundColor="Transparent" HasShadow="False">
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                Margin="20,0,0,0"
+                                FontAttributes="Bold"
+                                FontSize="30"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Accueil"
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="End"
+                                Source="logout.png"
+                                WidthRequest="25">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Logout_Clicked" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Menu Buttons-->
+                <StackLayout
+                    x:Name="MenuButtons"
+                    Padding="10,5"
+                    HorizontalOptions="End"
+                    Orientation="Horizontal">
+                    <Frame
+                        Padding="10,5"
+                        BackgroundColor="White"
+                        CornerRadius="6"
+                        HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="History_Clicked" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Center">
+                            <Image
+                                HeightRequest="16"
+                                HorizontalOptions="StartAndExpand"
+                                Source="history_icon.png"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Historique"
+                                TextColor="#96C11F"
+                                VerticalOptions="CenterAndExpand" />
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                        Padding="10,5"
+                        BackgroundColor="White"
+                        CornerRadius="6"
+                        HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Panel_Clicked" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            VerticalOptions="Center">
+                            <Image
+                                HeightRequest="16"
+                                HorizontalOptions="StartAndExpand"
+                                Source="pencil_icon.png"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Panel de saisie"
+                                TextColor="#96C11F"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
+                <StackLayout x:Name="Content" Margin="10,20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout x:Name="SiteInfoContainer" Grid.Row="0">
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    HeightRequest="25"
+                                    Source="Homeicon.png"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="22"
+                                    Text="Site"
+                                    TextColor="#646aa6"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <Frame
+                                Padding="15"
+                                BackgroundColor="White"
+                                CornerRadius="5"
+                                HasShadow="False">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            Text="Code Station : "
+                                            TextColor="#0099D3"
+                                            VerticalOptions="Center" />
+                                        <Frame
+                                            Padding="15,5"
+                                            BackgroundColor="#FED300"
+                                            CornerRadius="5"
+                                            HasShadow="False">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding StationDetails.code}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            Text="Nom Station : "
+                                            TextColor="#0099D3"
+                                            VerticalOptions="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="White"
+                                            CornerRadius="0"
+                                            HasShadow="False">
+                                            <Label
+                                                Padding="10,5"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding StationDetails.nom}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            Text="Ville : "
+                                            TextColor="#0099D3"
+                                            VerticalOptions="Center" />
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="White"
+                                            CornerRadius="0"
+                                            HasShadow="False">
+                                            <Label
+                                                Padding="10,5"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding StationDetails.ville}"
+                                                TextColor="Black"
+                                                VerticalOptions="Center" />
+                                        </Frame>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout x:Name="PrixDeVenteWinxoContainer" Grid.Row="1">
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    HeightRequest="25"
+                                    Source="Homeicon.png"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="22"
+                                    Text="Prix de vente WINXO"
+                                    TextColor="#646aa6"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <Frame
+                                Padding="10"
+                                BackgroundColor="White"
+                                CornerRadius="5"
+                                HasShadow="False">
+                                <StackLayout BindableLayout.ItemsSource="{Binding StationDetails.PrixVenteWinxo}" HorizontalOptions="FillAndExpand">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout>
+                                                <StackLayout Margin="0,0,0,10">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="20"
+                                                        Text="{Binding date}"
+                                                        TextColor="#01b989" />
+                                                </StackLayout>
+                                                <StackLayout
+                                                    Margin="0,0,0,30"
+                                                    BindableLayout.ItemsSource="{Binding listPrix}"
+                                                    HorizontalOptions="FillAndExpand">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="18"
+                                                                    Text="{Binding type, StringFormat='{0} : '}"
+                                                                    TextColor="#0099D3"
+                                                                    VerticalOptions="Center" />
+                                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                                    <Frame
+                                                                        Padding="15,5"
+                                                                        BackgroundColor="#ff3b79"
+                                                                        CornerRadius="5"
+                                                                        HasShadow="False">
+                                                                        <Label
+                                                                            FontAttributes="Bold"
+                                                                            FontSize="16"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="{Binding prix}"
+                                                                            TextColor="White"
+                                                                            VerticalOptions="Center" />
+                                                                    </Frame>
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="16"
+                                                                        Text="DH TTC / M3"
+                                                                        TextColor="Black"
+                                                                        VerticalOptions="Center" />
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout x:Name="PrixActuelsContainer" Grid.Row="2">
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    HeightRequest="25"
+                                    Source="Homeicon.png"
+                                    WidthRequest="25" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="22"
+                                    Text="Prix Actuels"
+                                    TextColor="#646aa6"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout
+                                BackgroundColor="White"
+                                BindableLayout.ItemsSource="{Binding StationDetails.PrixActuels}"
+                                HorizontalOptions="FillAndExpand">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame
+                                            Padding="10"
+                                            BackgroundColor="White"
+                                            HasShadow="False">
+                                            <StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="18"
+                                                        Text="{Binding nom, StringFormat='{0} : '}"
+                                                        TextColor="#0099D3"
+                                                        VerticalOptions="Center" />
+                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                        <Frame
+                                                            Padding="15,5"
+                                                            BackgroundColor="#ff3b79"
+                                                            CornerRadius="5"
+                                                            HasShadow="False">
+                                                            <Label
+                                                                FontAttributes="Bold"
+                                                                FontSize="16"
+                                                                HorizontalOptions="Center"
+                                                                Text="{Binding montant}"
+                                                                TextColor="White"
+                                                                VerticalOptions="Center" />
+                                                        </Frame>
+                                                        <Label
+                                                            FontAttributes="Bold"
+                                                            FontSize="16"
+                                                            Text="DH TTC / M3"
+                                                            TextColor="Black"
+                                                            VerticalOptions="Center" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</Page:BasePage>
