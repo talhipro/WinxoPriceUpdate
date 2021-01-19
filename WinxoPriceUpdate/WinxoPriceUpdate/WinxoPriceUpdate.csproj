@@ -11,6 +11,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\MockedData\AddNewDemandeResponse.json" />
+    <None Remove="Assets\MockedData\PriceTypes.json" />
+    <None Remove="Assets\MockedData\StationHistorique.json" />
+    <None Remove="Assets\MockedData\StatutList.json" />
+    <None Remove="Assets\TestJsonFile.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\MockedData\AddNewDemandeResponse.json" />
+    <EmbeddedResource Include="Assets\MockedData\PriceTypes.json" />
+    <EmbeddedResource Include="Assets\MockedData\StationDetails.json" />
+    <EmbeddedResource Include="Assets\MockedData\StationHistorique.json" />
+    <EmbeddedResource Include="Assets\MockedData\StatutList.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.468" />
     <PackageReference Include="Fody" Version="6.3.0">
       <PrivateAssets>all</PrivateAssets>
@@ -25,6 +41,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Assets\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Assets\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Historique.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

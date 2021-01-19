@@ -32,44 +32,43 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="#f2f2f2">
-                <StackLayout
-                    x:Name="Header"
-                    BackgroundColor="#96C11F"
-                    IsVisible="True">
-                    <Frame BackgroundColor="Transparent">
-                        <StackLayout Orientation="Horizontal">
-                            <Image
-                                HeightRequest="25"
-                                HorizontalOptions="End"
-                                Source="back_arrow.png"
-                                WidthRequest="25">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Back_Clicked" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="30"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="Panel de saisie"
-                                TextColor="White"
-                                VerticalOptions="CenterAndExpand" />
-                            <Image
-                                Margin="0,0,10,0"
-                                HeightRequest="25"
-                                HorizontalOptions="End"
-                                Source="logout.png"
-                                WidthRequest="25">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Logout_Clicked" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-
+        <StackLayout>
+            <StackLayout
+                x:Name="Header"
+                BackgroundColor="#96C11F"
+                IsVisible="True">
+                <Frame BackgroundColor="Transparent">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="back_arrow.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Back_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Panel de saisie"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <Image
+                            Margin="0,0,10,0"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="logout.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Logout_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <ScrollView>
                 <StackLayout x:Name="Content" Margin="10,20">
                     <Label
                         Margin="0,10"
@@ -77,9 +76,12 @@
                         FontSize="18"
                         Text="Prix décidé à être appliqués lors du prochain cycle de changement de prix"
                         TextColor="#646aa6" />
-                    <Frame CornerRadius="8">
-                        <StackLayout>
-                            <StackLayout BindableLayout.ItemsSource="{Binding PrixTypes}">
+                    <Frame
+                        BackgroundColor="White"
+                        CornerRadius="8"
+                        HasShadow="False">
+                        <StackLayout Spacing="15">
+                            <StackLayout BindableLayout.ItemsSource="{Binding PrixTypes}" Spacing="15">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout>
@@ -90,34 +92,14 @@
                                             <controls:CustomRoundedEntry
                                                 Keyboard="Numeric"
                                                 Placeholder="0.00"
+                                                PlaceholderColor="#EEEEEE"
                                                 Text="{Binding montant, Mode=TwoWay}"
-                                                TextChanged="CustomRoundedEntry_TextChanged" />
+                                                TextChanged="CustomRoundedEntry_TextChanged"
+                                                TextColor="#6e6e6e" />
                                         </StackLayout>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </StackLayout>
-                            <!--<StackLayout>
-                                <Label
-                                    FontAttributes="Bold"
-                                    Text="Gasoil 10"
-                                    TextColor="#0099D3" />
-                                <controls:CustomRoundedEntry
-                                    Keyboard="Numeric"
-                                    Placeholder="0.00"
-                                    Text="{Binding DemandeInputs.gasoilprix}"
-                                    TextChanged="CustomRoundedEntry_TextChanged" />
-                            </StackLayout>
-                            <StackLayout>
-                                <Label
-                                    FontAttributes="Bold"
-                                    Text="Super SP"
-                                    TextColor="#0099D3" />
-                                <controls:CustomRoundedEntry
-                                    Keyboard="Numeric"
-                                    Placeholder="0.00"
-                                    Text="{Binding DemandeInputs.superprix}"
-                                    TextChanged="CustomRoundedEntry_TextChanged" />
-                            </StackLayout>-->
                             <StackLayout>
                                 <Label
                                     FontAttributes="Bold"
@@ -125,11 +107,14 @@
                                     TextColor="#0099D3" />
                                 <StackLayout Orientation="Horizontal">
                                     <!--<controls:CustomRoundedEntry Placeholder="00/00/0000 00:00" />-->
-                                    <DatePicker Date="{Binding DateInput}" Format="dd/MM/yyyy" />
-                                    <TimePicker Format="HH:mm" Time="{Binding TimeInput}" />
+                                    <controls:DatePickerCtrl
+                                        Date="{Binding DateInput}"
+                                        Format="dd/MM/yyyy"
+                                        HorizontalOptions="FillAndExpand"
+                                        Placeholder="Sélectionner une date" />
+                                    <controls:TimePickerCtrl Format="HH:mm" Time="{Binding TimeInput}" />
                                 </StackLayout>
                             </StackLayout>
-
                         </StackLayout>
                     </Frame>
                     <StackLayout Margin="0,10" Orientation="Horizontal">
@@ -153,7 +138,7 @@
                             TextColor="White" />
                     </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </Page:BasePage>

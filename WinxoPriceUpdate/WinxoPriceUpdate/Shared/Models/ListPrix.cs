@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace WinxoPriceUpdate.Shared.Models
 {
+    [AddINotifyPropertyChangedInterface]
     public class ListPrix
     {
         public int id { get; set; }
@@ -12,6 +14,7 @@ namespace WinxoPriceUpdate.Shared.Models
         public decimal prix { get; set; }
     }
 
+    [AddINotifyPropertyChangedInterface]
     public class PrixVenteWinxo
     {
         public string date { get; set; }
@@ -25,6 +28,7 @@ namespace WinxoPriceUpdate.Shared.Models
     //    public string nom { get; set; }
     //}
 
+    [AddINotifyPropertyChangedInterface]
     public class PrixTypeForm
     {
         public int id { get; set; }
@@ -33,6 +37,7 @@ namespace WinxoPriceUpdate.Shared.Models
         public string montant { get; set; }
     }
 
+    [AddINotifyPropertyChangedInterface]
     public class PrixActuel
     {
         public int id { get; set; }
@@ -43,7 +48,7 @@ namespace WinxoPriceUpdate.Shared.Models
         public decimal montant { get; set; }
     }
 
-
+    [AddINotifyPropertyChangedInterface]
     public class PrixTypeItem
     {
         public int prixType_id { get; set; }

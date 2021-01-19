@@ -1,0 +1,322 @@
+{
+  "success": true,
+  "message": null,
+  "data": [
+    {
+      "id": 74,
+      "station_id": 1,
+      "datesaisie": "2020-12-24T17:49:00.000000Z",
+      "dateapplication": "2020-12-25T18:00:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 1,
+        "statutNom": "Saisi",
+        "statutColor": "#9862D5"
+      },
+      "demandePrix": [
+        {
+          "id": 32,
+          "demande_id": 74,
+          "prixType_id": 1,
+          "montant": "10.15",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 33,
+          "demande_id": 74,
+          "prixType_id": 2,
+          "montant": "20.25",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T12:02:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 5,
+        "statutNom": "Annulé",
+        "statutColor": "#D1505F"
+      },
+      "demandePrix": [
+        {
+          "id": 28,
+          "demande_id": 71,
+          "prixType_id": 1,
+          "montant": "11.32",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 29,
+          "demande_id": 71,
+          "prixType_id": 2,
+          "montant": "12.23",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T11:57:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 3,
+      "statutRef": {
+        "id": 3,
+        "statutNom": "Appliqué",
+        "statutColor": "#5AC57D"
+      },
+      "demandePrix": [
+        {
+          "id": 26,
+          "demande_id": 69,
+          "prixType_id": 1,
+          "montant": "11.32",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 27,
+          "demande_id": 69,
+          "prixType_id": 2,
+          "montant": "12.23",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T10:13:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 1,
+        "statutNom": "Saisi",
+        "statutColor": "#9862D5"
+      },
+      "demandePrix": [
+        {
+          "id": 24,
+          "demande_id": 68,
+          "prixType_id": 1,
+          "montant": "11.32",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 25,
+          "demande_id": 68,
+          "prixType_id": 2,
+          "montant": "12.23",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T12:01:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 2,
+        "statutNom": "Envoyé",
+        "statutColor": "#659BF5"
+      },
+      "demandePrix": [
+        {
+          "id": 32,
+          "demande_id": 74,
+          "prixType_id": 1,
+          "montant": "10.15",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 33,
+          "demande_id": 74,
+          "prixType_id": 2,
+          "montant": "11.25",
+          "type": "S",
+          "nom": "Super SP"
+        },
+        {
+          "id": 34,
+          "demande_id": 74,
+          "prixType_id": 3,
+          "montant": "12.25",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T10:10:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 1,
+        "statutNom": "Saisi",
+        "statutColor": "#9862D5"
+      },
+      "demandePrix": [
+        {
+          "id": 22,
+          "demande_id": 67,
+          "prixType_id": 1,
+          "montant": "11.32",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 23,
+          "demande_id": 67,
+          "prixType_id": 2,
+          "montant": "12.23",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T10:07:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 1,
+        "statutNom": "Saisi",
+        "statutColor": "#9862D5"
+      },
+      "demandePrix": [
+        {
+          "id": 20,
+          "demande_id": 66,
+          "prixType_id": 1,
+          "montant": "11.32",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 21,
+          "demande_id": 66,
+          "prixType_id": 2,
+          "montant": "12.23",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T09:58:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 1,
+        "statutNom": "Saisi",
+        "statutColor": "#9862D5"
+      },
+      "demandePrix": [
+        {
+          "id": 18,
+          "demande_id": 65,
+          "prixType_id": 1,
+          "montant": "11.32",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 19,
+          "demande_id": 65,
+          "prixType_id": 2,
+          "montant": "12.23",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "station_id": 1,
+      "datesaisie": "2020-12-23T09:56:00.000000Z",
+      "dateapplication": "2020-12-27T16:25:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 1,
+        "statutNom": "Saisi",
+        "statutColor": "#9862D5"
+      },
+      "demandePrix": [
+        {
+          "id": 32,
+          "demande_id": 74,
+          "prixType_id": 1,
+          "montant": "10.15",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 33,
+          "demande_id": 74,
+          "prixType_id": 2,
+          "montant": "11.25",
+          "type": "S",
+          "nom": "Super SP"
+        },
+        {
+          "id": 34,
+          "demande_id": 74,
+          "prixType_id": 3,
+          "montant": "12.25",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "station_id": 1,
+      "datesaisie": "2020-12-24T17:49:00.000000Z",
+      "dateapplication": "2020-12-25T18:00:00.000000Z",
+      "statut_id": 1,
+      "statutRef": {
+        "id": 4,
+        "statutNom": "Traité",
+        "statutColor": "#F2AE54"
+      },
+      "demandePrix": [
+        {
+          "id": 32,
+          "demande_id": 74,
+          "prixType_id": 1,
+          "montant": "10.15",
+          "type": "G",
+          "nom": "Gasoil 10"
+        },
+        {
+          "id": 33,
+          "demande_id": 74,
+          "prixType_id": 2,
+          "montant": "20.25",
+          "type": "S",
+          "nom": "Super SP"
+        }
+      ]
+    }
+  ]
+}

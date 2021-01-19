@@ -11,20 +11,21 @@ namespace WinxoPriceUpdate
         {
             InitializeComponent();
 
+            //MainPage = new NavigationPage(new Views.Home());
+            MainPage = new NavigationPage(new Views.Login());
+
             //var token = AppSettings.AccessToken;
-            bool isTokenValid = Helpers.AppHelper.IsTokenStillValid(AppSettings.ValidUntil);
+            /*bool isTokenValid = Helpers.AppHelper.IsTokenStillValid(AppSettings.ValidUntil);
 
             if (isTokenValid)
             {
-                //Create the master page & give it a default page. check for token's validity tho
-
                 MainPage = new NavigationPage(new Views.Home());
                 return;
             }
             else
             {
                 MainPage = new Views.Login();
-            }
+            }*/
         }
 
         protected override void OnStart()

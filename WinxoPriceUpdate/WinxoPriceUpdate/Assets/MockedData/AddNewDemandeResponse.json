@@ -1,0 +1,32 @@
+{
+    "success": true,
+    "message": "Demande ajouté avec success",
+    "data": {
+        "station_id": 3,
+        "dateapplication": "2020-12-26T13:00:00.000000Z",
+        "statut_id": 1,
+        "datesaisie": "2020-12-25T10:05:00.000000Z",
+        "id": 75,
+        "demandePrix": [
+            {
+                "prixType_id": 1,
+                "montant": 13.13,
+                "demande_id": 75,
+                "type": "G",
+                "nom": "Gasoil 10"
+            },
+            {
+                "prixType_id": 2,
+                "montant": 14.14,
+                "demande_id": 75,
+                "type": "S",
+                "nom": "Super SP"
+            }
+        ],
+        "statutRef": {
+            "id": 1,
+            "statutNom": "Saisi",
+            "statutColor": "#9862D5"
+        }
+    }
+}

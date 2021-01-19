@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "message": null,
+  "data": {
+    "id": 1,
+    "nom": "Station 01",
+    "ville": "Casablanca",
+    "code": "M0T1",
+    "PrixVenteWinxo": [
+      {
+        "date": "03/12/2020",
+        "listPrix": [
+          {
+            "id": 5,
+            "prix_winxo_id": "3",
+            "type": "Gasoil 10",
+            "prix": "9.55"
+          },
+          {
+            "id": 6,
+            "prix_winxo_id": "3",
+            "type": "Super SP",
+            "prix": "10.15"
+          }
+        ]
+      },
+      {
+        "date": "02/12/2020",
+        "listPrix": [
+          {
+            "id": 3,
+            "prix_winxo_id": "2",
+            "type": "Gasoil 10",
+            "prix": "9.15"
+          },
+          {
+            "id": 4,
+            "prix_winxo_id": "2",
+            "type": "Super SP",
+            "prix": "9.98"
+          }
+        ]
+      }
+    ],
+    "PrixActuels": [
+      {
+        "id": 129,
+        "demande_id": 118,
+        "prixType_id": 1,
+        "montant": "2.56",
+        "type": "G",
+        "nom": "Gasoil 10"
+      },
+      {
+        "id": 130,
+        "demande_id": 118,
+        "prixType_id": 2,
+        "montant": "3.67",
+        "type": "S",
+        "nom": "Super SP"
+      },
+      {
+        "id": 131,
+        "demande_id": 118,
+        "prixType_id": 3,
+        "montant": "4.11",
+        "type": "E",
+        "nom": "Essence"
+      }
+    ]
+  }
+}

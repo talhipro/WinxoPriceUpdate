@@ -33,6 +33,7 @@ namespace Shared.httpREST
                 {
                     client.BaseAddress = new Uri(AppUrls.Login);
                     client.DefaultRequestHeaders.Accept.Clear();
+                    client.Timeout = TimeSpan.FromSeconds(30);
 
 
                     if (!string.IsNullOrWhiteSpace(acceptMediaType))
@@ -63,7 +64,8 @@ namespace Shared.httpREST
             }
             catch (Exception ex)
             {
-                return new LoginResultModel() { Error = "Error", ErrorDescription = ex.Message };
+                //return new LoginResultModel() { Error = "Error", ErrorDescription = ex.Message };
+                return new LoginResultModel() { Error = "Error", ErrorDescription = WinxoPriceUpdate.Assets.Strings.ErreurMessage };
             }
         }
         #endregion
@@ -99,6 +101,7 @@ namespace Shared.httpREST
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                    client.Timeout = TimeSpan.FromSeconds(30);
 
                     //make request
                     HttpResponseMessage response = new HttpResponseMessage();
@@ -109,8 +112,9 @@ namespace Shared.httpREST
                             {
                                 response = await client.GetAsync(uri);
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
+                                return new RESTServiceResponse<T>(false, WinxoPriceUpdate.Assets.Strings.ErreurMessage);
                             }
                             break;
                         case HttpVerbs.POST:
@@ -121,7 +125,7 @@ namespace Shared.httpREST
                             }
                             catch (Exception ex)
                             {
-                                System.Diagnostics.Debug.WriteLine(ex.Message);
+                                return new RESTServiceResponse<T>(false, WinxoPriceUpdate.Assets.Strings.ErreurMessage);
                             }
                             break;
                         default:
@@ -145,7 +149,8 @@ namespace Shared.httpREST
             }
             catch (Exception ex)
             {
-                return new RESTServiceResponse<T>(false, ex.Message);
+                //return new RESTServiceResponse<T>(false, ex.Message);
+                return new RESTServiceResponse<T>(false, WinxoPriceUpdate.Assets.Strings.ErreurMessage);
             }
         }
         #endregion

@@ -96,10 +96,13 @@
     <Compile Include="Renderers\CustomPickerRedered.cs" />
     <Compile Include="Renderers\CustomRoundedEditorRenderer.cs" />
     <Compile Include="Renderers\CustomRoundedEntryRenderer.cs" />
+    <Compile Include="Renderers\DatePickerCtrlRenderer.cs" />
+    <Compile Include="Renderers\TimePickerCtrlRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\TestJsonFile.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

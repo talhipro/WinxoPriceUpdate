@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "message": "5 Records found",
+  "data": [
+    {
+      "id": 1,
+      "statutNom": "Saisi",
+      "statutColor": "#9862D5"
+    },
+    {
+      "id": 2,
+      "statutNom": "Envoyé",
+      "statutColor": "#659BF5"
+    },
+    {
+      "id": 3,
+      "statutNom": "Appliqué",
+      "statutColor": "#5AC57D"
+    },
+    {
+      "id": 4,
+      "statutNom": "Traité",
+      "statutColor": "#F2AE54"
+    },
+    {
+      "id": 5,
+      "statutNom": "Annulé",
+      "statutColor": "#D1505F"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
-﻿namespace WinxoPriceUpdate.Shared.Models
+﻿using PropertyChanged;
+
+namespace WinxoPriceUpdate.Shared.Models
 {
+    [AddINotifyPropertyChangedInterface]
     public class StatutModel
     {
         public string id { get; set; }

@@ -91,7 +91,8 @@ namespace WinxoPriceUpdate.Views
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Erreur de login", ex.Message, "ok");
+                //await App.Current.MainPage.DisplayAlert("Erreur de login", ex.Message, "ok");
+                await App.Current.MainPage.DisplayAlert("Erreur de login", Assets.Strings.ErreurMessage, "ok");
             }
             finally
             {

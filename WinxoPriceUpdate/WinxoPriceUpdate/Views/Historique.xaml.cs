@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 namespace WinxoPriceUpdate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [PropertyChanged.AddINotifyPropertyChangedInterface]
     public partial class Historique : Base.BasePage
     {
         public HistoriqueViewModel historiqueViewModel;
@@ -38,6 +39,53 @@ namespace WinxoPriceUpdate.Views
         private async void Back_Clicked(object sender, EventArgs e)
         {
             await Application.Current.MainPage.Navigation.PopAsync();
+        }
+
+        private void Item_Tapped(object sender, EventArgs e)
+        {
+            var ItemContext = ((StackLayout)sender).BindingContext as DemandeModel;
+
+
+
+            if (ItemContext.DetailsColapse)
+            {
+                ItemContext.DetailsColapse = false;
+            }
+            else
+            {
+                ItemContext.DetailsColapse = true;
+            }
+        }
+
+        private async void FilterTitle_Tapped(object sender, EventArgs e)
+        {
+            FilterFields.IsVisible = !FilterFields.IsVisible;
+
+            if (FilterFields.IsVisible)
+                await ArrowImg.RotateTo(180, 0, easing: Easing.SinIn);
+            else
+                await ArrowImg.RotateTo(0, 0, easing: Easing.SinIn);
+        }
+
+        private void DatePickerCtrl_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            //var _selectedDate = ((Controls.DatePickerCtrl)sender).Date;
+            //var _dateNow = DateTime.Now.Date;
+            //if (historiqueViewModel.IsInitValue && _selectedDate == _dateNow)
+            //{
+            //    ((Controls.DatePickerCtrl)sender).IsInitValue = true;
+            //}
+            //else
+            //{
+            //    ((Controls.DatePickerCtrl)sender).IsInitValue = false;
+            //    historiqueViewModel.IsInitValue = false;
+            //}
+        }
+
+        private void Statut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((Picker)sender).SelectedIndex != -1)
+                historiqueViewModel.IsInitValue = false;
         }
     }
 }

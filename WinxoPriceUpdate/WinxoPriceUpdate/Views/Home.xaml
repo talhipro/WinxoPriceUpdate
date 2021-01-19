@@ -31,101 +31,121 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="#f2f2f2">
-                <!--#region Header-->
-                <StackLayout
-                    x:Name="Header"
-                    BackgroundColor="#96C11F"
-                    IsVisible="True">
-                    <Frame BackgroundColor="Transparent" HasShadow="False">
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                Margin="20,0,0,0"
-                                FontAttributes="Bold"
-                                FontSize="30"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="Accueil"
-                                TextColor="White"
-                                VerticalOptions="CenterAndExpand" />
-                            <Image
-                                HeightRequest="25"
-                                HorizontalOptions="End"
-                                Source="logout.png"
-                                WidthRequest="25">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Logout_Clicked" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-                <!--#endregion-->
+        <StackLayout BackgroundColor="#f2f2f2">
+            <!--#region Header-->
+            <StackLayout
+                x:Name="Header"
+                BackgroundColor="#96C11F"
+                IsVisible="True">
+                <Frame BackgroundColor="Transparent" HasShadow="False">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            Margin="20,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Accueil"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="logout.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Logout_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <!--#endregion-->
 
-                <!--#region Menu Buttons-->
-                <StackLayout
-                    x:Name="MenuButtons"
+            <!--#region Menu Buttons-->
+            <StackLayout
+                x:Name="MenuButtons"
+                Padding="10,5"
+                HorizontalOptions="End"
+                Orientation="Horizontal">
+                <Frame
                     Padding="10,5"
-                    HorizontalOptions="End"
-                    Orientation="Horizontal">
-                    <Frame
-                        Padding="10,5"
-                        BackgroundColor="White"
-                        CornerRadius="6"
-                        HasShadow="False">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="History_Clicked" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal"
-                            VerticalOptions="Center">
-                            <Image
-                                HeightRequest="16"
-                                HorizontalOptions="StartAndExpand"
-                                Source="history_icon.png"
-                                VerticalOptions="CenterAndExpand" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                HorizontalOptions="EndAndExpand"
-                                Text="Historique"
-                                TextColor="#96C11F"
-                                VerticalOptions="CenterAndExpand" />
+                    BackgroundColor="White"
+                    CornerRadius="6"
+                    HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="History_Clicked" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Image
+                            HeightRequest="16"
+                            HorizontalOptions="StartAndExpand"
+                            Source="history_icon.png"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="Historique"
+                            TextColor="#96C11F"
+                            VerticalOptions="CenterAndExpand" />
 
-                        </StackLayout>
-                    </Frame>
+                    </StackLayout>
+                </Frame>
 
-                    <Frame
-                        Padding="10,5"
-                        BackgroundColor="White"
-                        CornerRadius="6"
-                        HasShadow="False">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Panel_Clicked" />
-                        </Frame.GestureRecognizers>
-                        <StackLayout
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal"
-                            VerticalOptions="Center">
-                            <Image
-                                HeightRequest="16"
-                                HorizontalOptions="StartAndExpand"
-                                Source="pencil_icon.png"
-                                VerticalOptions="CenterAndExpand" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                HorizontalOptions="EndAndExpand"
-                                Text="Panel de saisie"
-                                TextColor="#96C11F"
-                                VerticalOptions="CenterAndExpand" />
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-                <!--#endregion-->
+                <Frame
+                    Padding="10,5"
+                    BackgroundColor="White"
+                    CornerRadius="6"
+                    HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Panel_Clicked" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Image
+                            HeightRequest="16"
+                            HorizontalOptions="StartAndExpand"
+                            Source="pencil_icon.png"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            HorizontalOptions="EndAndExpand"
+                            Text="Panel de saisie"
+                            TextColor="#96C11F"
+                            VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Erreur message-->
+            <StackLayout
+                x:Name="RefreshBtn"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding RefreshBtnVisible}"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+                <Button
+                    BackgroundColor="Transparent"
+                    Command="{Binding RefreshCommand}"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Cliquez ici pour actualiser"
+                    TextColor="#646aa6"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!--#endregion-->
+
+            <ScrollView IsVisible="{Binding ContentVisible}">
                 <StackLayout x:Name="Content" Margin="10,20">
-                    <Grid>
+                    <Grid RowSpacing="20">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -236,11 +256,14 @@
                                 BackgroundColor="White"
                                 CornerRadius="5"
                                 HasShadow="False">
-                                <StackLayout BindableLayout.ItemsSource="{Binding StationDetails.PrixVenteWinxo}" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    BindableLayout.ItemsSource="{Binding StationDetails.PrixVenteWinxo}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="10">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
-                                            <StackLayout>
-                                                <StackLayout Margin="0,0,0,10">
+                                            <StackLayout Spacing="0">
+                                                <StackLayout Margin="0">
                                                     <Label
                                                         FontAttributes="Bold"
                                                         FontSize="20"
@@ -248,9 +271,10 @@
                                                         TextColor="#01b989" />
                                                 </StackLayout>
                                                 <StackLayout
-                                                    Margin="0,0,0,30"
+                                                    Margin="10,0,0,0"
                                                     BindableLayout.ItemsSource="{Binding listPrix}"
-                                                    HorizontalOptions="FillAndExpand">
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Spacing="2">
                                                     <BindableLayout.ItemTemplate>
                                                         <DataTemplate>
                                                             <StackLayout Orientation="Horizontal">
@@ -304,56 +328,57 @@
                                     TextColor="#646aa6"
                                     VerticalOptions="Center" />
                             </StackLayout>
-                            <StackLayout
+                            <Frame
+                                Margin="0,0,0,10"
+                                Padding="10,0"
                                 BackgroundColor="White"
-                                BindableLayout.ItemsSource="{Binding StationDetails.PrixActuels}"
-                                HorizontalOptions="FillAndExpand">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Frame
-                                            Padding="10"
-                                            BackgroundColor="White"
-                                            HasShadow="False">
-                                            <StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label
-                                                        FontAttributes="Bold"
-                                                        FontSize="18"
-                                                        Text="{Binding nom, StringFormat='{0} : '}"
-                                                        TextColor="#0099D3"
-                                                        VerticalOptions="Center" />
-                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                                        <Frame
-                                                            Padding="15,5"
-                                                            BackgroundColor="#ff3b79"
-                                                            CornerRadius="5"
-                                                            HasShadow="False">
-                                                            <Label
-                                                                FontAttributes="Bold"
-                                                                FontSize="16"
-                                                                HorizontalOptions="Center"
-                                                                Text="{Binding montant}"
-                                                                TextColor="White"
-                                                                VerticalOptions="Center" />
-                                                        </Frame>
+                                CornerRadius="5"
+                                HasShadow="False">
+                                <StackLayout
+                                    Padding="0,10"
+                                    BackgroundColor="Transparent"
+                                    BindableLayout.ItemsSource="{Binding StationDetails.PrixActuels}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="2">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="18"
+                                                    Text="{Binding nom, StringFormat='{0} : '}"
+                                                    TextColor="#0099D3"
+                                                    VerticalOptions="Center" />
+                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                    <Frame
+                                                        Padding="15,5"
+                                                        BackgroundColor="#ff3b79"
+                                                        CornerRadius="5"
+                                                        HasShadow="False">
                                                         <Label
                                                             FontAttributes="Bold"
                                                             FontSize="16"
-                                                            Text="DH TTC / M3"
-                                                            TextColor="Black"
+                                                            HorizontalOptions="Center"
+                                                            Text="{Binding montant}"
+                                                            TextColor="White"
                                                             VerticalOptions="Center" />
-                                                    </StackLayout>
+                                                    </Frame>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        FontSize="16"
+                                                        Text="DH TTC / M3"
+                                                        TextColor="Black"
+                                                        VerticalOptions="Center" />
                                                 </StackLayout>
                                             </StackLayout>
-                                        </Frame>
-
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
                     </Grid>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </Page:BasePage>

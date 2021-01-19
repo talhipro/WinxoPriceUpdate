@@ -30,7 +30,8 @@ namespace WinxoPriceUpdate.Shared
             }
             catch (Exception ex)
             {
-                return new RESTServiceResponse<StationModel>() { success = false, message = $"Erreur: {ex.Message}" };
+                //return new RESTServiceResponse<StationModel>() { success = false, message = $"Erreur: {ex.Message}" };
+                return new RESTServiceResponse<StationModel>() { success = false, message = Assets.Strings.ErreurMessage };
             }
         }
         #endregion
@@ -62,7 +63,7 @@ namespace WinxoPriceUpdate.Shared
             }
             catch (Exception ex)
             {
-                return new RESTServiceResponse<DemandeModel>() { success = false, message = $"Erreur: {ex.Message}" };
+                return new RESTServiceResponse<DemandeModel>() { success = false, message = Assets.Strings.ErreurMessage };
             }
         }
         #endregion
@@ -76,7 +77,23 @@ namespace WinxoPriceUpdate.Shared
             }
             catch (Exception ex)
             {
-                return new RESTServiceResponse<ObservableCollection<PrixTypeForm>>() { success = false, message = $"Erreur: {ex.Message}" };
+                return new RESTServiceResponse<ObservableCollection<PrixTypeForm>>() { success = false, message = Assets.Strings.ErreurMessage };
+            }
+        }
+        #endregion
+
+        #region 6 - Get Filtered Station Demandes
+        public static async Task<RESTServiceResponse<PaginateDemandeModel>> FilterStationDemandes(int page, FilterStationDemandesModel filterStationDemandes, int offset = 0)
+        {
+            try
+            {
+                string url = string.Concat(AppUrls.FilterStationDemandes, 1/*, AppSettings.UserId*/, "?page=" + page, (offset != 0) ? "&offset=" + offset : "");
+
+                return await RESTHelper.GetRequest<PaginateDemandeModel>(url: url, token: AppSettings.AccessToken, method: HttpVerbs.POST, postObject: filterStationDemandes);
+            }
+            catch (Exception ex)
+            {
+                return new RESTServiceResponse<PaginateDemandeModel>() { success = false, message = $"Erreur: {ex.Message}" };
             }
         }
         #endregion
@@ -91,7 +108,7 @@ namespace WinxoPriceUpdate.Shared
             }
             catch (Exception ex)
             {
-                return new RESTServiceResponse<ObservableCollection<StationModel>>() { success = false, message = $"Erreur: {ex.Message}" };
+                return new RESTServiceResponse<ObservableCollection<StationModel>>() { success = false, message = Assets.Strings.ErreurMessage };
             }
         }
         #endregion

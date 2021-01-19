@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WinxoPriceUpdate.Helpers;
 using WinxoPriceUpdate.Shared;
 using WinxoPriceUpdate.Shared.Models;
+using WinxoPriceUpdate.Shared.Enums;
 using Xamarin.Forms;
 
 namespace WinxoPriceUpdate.ViewModels
@@ -15,11 +16,11 @@ namespace WinxoPriceUpdate.ViewModels
     {
         public SaveDemandeModel DemandeInputs { get; set; }
         public ObservableCollection<PrixTypeForm> PrixTypes { get; set; } = new ObservableCollection<PrixTypeForm>();
-        public DateTime DateInput { get; set; } = DateTime.Now;
+        public DateTime? DateInput { get; set; } = null;
         public TimeSpan TimeInput { get; set; } = new TimeSpan(DateTime.Now.Hour + 1, DateTime.Now.Minute, DateTime.Now.Second);
 
         public Command SubmitFormCommande { get; set; }
-        private bool IsSubmitingForm = false;
+        public bool IsSubmitingForm { get; set; }
 
         public PanelSaisieViewModel()
         {
@@ -48,10 +49,64 @@ namespace WinxoPriceUpdate.ViewModels
         {
             base.OnAppearing();
 
-            var RequestResult = await ApiCalls.GetPrixTypes();
-            if (RequestResult.success)
+            // Get data from API
+            //await GetPrixTypes();
+
+            // Get data from Local JSON
+            await GetPrixTypesJsonData();
+        }
+
+        public async Task GetPrixTypesJsonData()
+        {
+            try
             {
-                PrixTypes = RequestResult.data;
+                AppHelper.ALoadingShow("Chargement...");
+
+                var RequestResult = await AppHelper.ReadFromJson<ObservableCollection<PrixTypeForm>>("Assets.MockedData.PriceTypes.json");
+
+                if (RequestResult.success)
+                {
+                    PrixTypes = RequestResult.data;
+                }
+                else
+                {
+                    AppHelper.ASnack(message: RequestResult.message, type: SnackType.Error);
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                AppHelper.ASnack(message: Assets.Strings.ErreurMessage, type: SnackType.Error);
+            }
+            finally
+            {
+                AppHelper.ALoadingHide();
+            }
+        }
+
+        private async Task GetPrixTypes()
+        {
+            try
+            {
+                AppHelper.ALoadingShow("Chargement...");
+                var RequestResult = await ApiCalls.GetPrixTypes();
+                if (RequestResult.success)
+                {
+                    PrixTypes = RequestResult.data;
+                }
+                else
+                {
+                    AppHelper.ASnack(message: RequestResult.message, type: SnackType.Error);
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                }
+            }
+            catch (Exception)
+            {
+                AppHelper.ASnack(message: Assets.Strings.ErreurMessage, type: SnackType.Error);
+            }
+            finally
+            {
+                AppHelper.ALoadingHide();
             }
         }
 
@@ -60,45 +115,70 @@ namespace WinxoPriceUpdate.ViewModels
             // Date Format to send 2020-12-04 15:10
             try
             {
-                //if (DemandeInputs.gasoilprix == 0 && DemandeInputs.superprix == 0)
-                //{
-                //    await Application.Current.MainPage.DisplayAlert("Erreur", "Veuillez mentionner les prix", "Ok");
-                //    return;
-                //}
+                if (PrixTypes.Count == 0)
+                {
+                    return;
+                }
+                bool _priceValidation = false;
+                foreach (var prix in PrixTypes)
+                {
+                    if (!(string.IsNullOrEmpty(prix.montant) || double.Parse(prix.montant) == 0))
+                    {
+                        _priceValidation = true;
+                        break;
+                    }
+                }
+                if(!_priceValidation)
+                {
+                    AppHelper.ASnack(message: Assets.Strings.ErreurEmptyPriceMessage, type: SnackType.Warning);
+                    return;
+                }
+                if(!DateInput.HasValue)
+                {
+                    AppHelper.ASnack(message: Assets.Strings.ErreurDateApplicationEmpty, type: SnackType.Warning);
+                    return;
+                }
+
                 AppHelper.ALoadingShow("Chargement...");
 
-                DateTime FinalApplicationDateTime = new DateTime(DateInput.Year, DateInput.Month, DateInput.Day, TimeInput.Hours, TimeInput.Minutes, TimeInput.Seconds);
+                DateTime FinalApplicationDateTime = new DateTime(((DateTime)DateInput).Year, ((DateTime)DateInput).Month, ((DateTime)DateInput).Day, TimeInput.Hours, TimeInput.Minutes, TimeInput.Seconds);
 
                 DemandeInputs.dateapplication = FinalApplicationDateTime;
 
                 foreach (var prix in PrixTypes)
                 {
-                    DemandeInputs.demandePrix.Add(new PrixTypeItem
+                    if (prix?.montant != null)
                     {
-                        prixType_id = prix.id,
-                        montant = double.Parse(prix.montant/*.Replace(',', '.'), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture*/)
-                    });
+                        DemandeInputs.demandePrix.Add(new PrixTypeItem
+                        {
+                            prixType_id = prix.id,
+                            montant = double.Parse(prix.montant)
+                        });
+                    }
                 }
 
-                var RequestResult = await ApiCalls.SaveNewDemande(DemandeInputs);
+                // Post Demande to API
+                //var RequestResult = await ApiCalls.SaveNewDemande(DemandeInputs);
+
+                // Get data from Local JSON
+                var RequestResult = await AppHelper.ReadFromJson<DemandeModel>("Assets.MockedData.AddNewDemandeResponse.json");
 
                 if (RequestResult.success)
                 {
-                    string jsonString = JsonConvert.SerializeObject(RequestResult.data, Formatting.Indented);
-
-                    await Application.Current.MainPage.DisplayAlert("succès", RequestResult.message, "Ok");
-                    await Application.Current.MainPage.DisplayAlert("Data", jsonString, "Ok");
+                    //string jsonString = JsonConvert.SerializeObject(RequestResult.data, Formatting.Indented);
+                    //await Application.Current.MainPage.DisplayAlert("Data", jsonString, "Ok");
+                    AppHelper.ASnack(message: RequestResult.message, type: SnackType.Success);
 
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Erreur", RequestResult.message, "ok");
+                    AppHelper.ASnack(message: RequestResult.message, type: SnackType.Error);
                 }
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Erreur", ex.Message, "ok");
+                AppHelper.ASnack(message: Assets.Strings.ErreurMessage, type: SnackType.Error);
             }
             finally
             {

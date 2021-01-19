@@ -47,19 +47,19 @@ namespace WinxoPriceUpdate.Views
 
         private void CustomRoundedEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var entry = (Entry)sender;
-            entry.TextChanged -= CustomRoundedEntry_TextChanged;
+            //var entry = (Entry)sender;
+            //entry.TextChanged -= CustomRoundedEntry_TextChanged;
 
-            if (entry.Text.Contains(",") && (e.NewTextValue != null && e.NewTextValue.EndsWith(".")))
-            {
-                entry.Text = e.OldTextValue;
-            }
-            else
-            {
-                entry.Text = e.NewTextValue?.Replace(".", ",");
-            }
+            //if (entry.Text.Contains(",") && (e.NewTextValue != null && e.NewTextValue.EndsWith(".")))
+            //{
+            //    entry.Text = e.OldTextValue;
+            //}
+            //else
+            //{
+            //    entry.Text = e.NewTextValue?.Replace(".", ",");
+            //}
 
-            entry.TextChanged += CustomRoundedEntry_TextChanged;
+            //entry.TextChanged += CustomRoundedEntry_TextChanged;
         }
 
         private async void Back_Clicked(object sender, EventArgs e)

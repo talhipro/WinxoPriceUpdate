@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Page="clr-namespace:WinxoPriceUpdate.Views.Base"
+    xmlns:controls="clr-namespace:WinxoPriceUpdate.Controls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
@@ -31,45 +32,159 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="#f2f2f2">
-                <StackLayout
-                    x:Name="Header"
-                    BackgroundColor="#96C11F"
-                    IsVisible="True">
-                    <Frame BackgroundColor="Transparent">
-                        <StackLayout Orientation="Horizontal">
-                            <Image
-                                Margin="0,0,10,0"
-                                HeightRequest="25"
-                                HorizontalOptions="End"
-                                Source="back_arrow.png"
-                                WidthRequest="25">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Back_Clicked" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Label
+        <StackLayout BackgroundColor="#f2f2f2" Spacing="0">
+            <StackLayout
+                x:Name="Header"
+                BackgroundColor="#96C11F"
+                IsVisible="True">
+                <Frame BackgroundColor="Transparent">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            Margin="0,0,10,0"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="back_arrow.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Back_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Historique"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <Image
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="logout.png"
+                            WidthRequest="25">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Logout_Clicked" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <!--#region Filter-->
+            <Frame
+                Margin="10"
+                BackgroundColor="White"
+                CornerRadius="8"
+                HasShadow="False">
+                <StackLayout Spacing="15">
+                    <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FilterTitle_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            Text="Filter Title "
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                        <Image
+                            x:Name="ArrowImg"
+                            HeightRequest="25"
+                            HorizontalOptions="EndAndExpand"
+                            Source="down_arrow.png"
+                            WidthRequest="25" />
+                    </StackLayout>
+                    <StackLayout
+                        x:Name="FilterFields"
+                        BackgroundColor="White"
+                        IsVisible="False">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="De"
+                            TextColor="#646aa6" />
+                        <controls:DatePickerCtrl
+                            Date="{Binding FilterStationDemandes.StartDate}"
+                            DateSelected="DatePickerCtrl_DateSelected"
+                            Format="dd/MM/yyyy"
+                            IsInitValue="{Binding IsInitValue, Mode=TwoWay}"
+                            Placeholder="Date de début" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="à"
+                            TextColor="#646aa6" />
+                        <controls:DatePickerCtrl
+                            Date="{Binding FilterStationDemandes.EndDate}"
+                            DateSelected="DatePickerCtrl_DateSelected"
+                            Format="dd/MM/yyyy"
+                            IsInitValue="{Binding IsInitValue, Mode=TwoWay}"
+                            Placeholder="Date de fin" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Statut"
+                            TextColor="#646aa6" />
+                        <Frame
+                            Padding="2"
+                            BackgroundColor="#F5F5F5"
+                            CornerRadius="6"
+                            HasShadow="False">
+                            <controls:CustomPicker
+                                Title="Choisissez un statut"
+                                BackgroundColor="White"
+                                FontSize="25"
+                                ItemDisplayBinding="{Binding statutNom}"
+                                ItemsSource="{Binding StatutList}"
+                                SelectedIndexChanged="Statut_SelectedIndexChanged"
+                                SelectedItem="{Binding SelectedStatut}"
+                                TitleColor="#B9BBBD" />
+                        </Frame>
+                        <StackLayout
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+                            <Button
+                                BackgroundColor="Transparent"
+                                Command="{Binding FilterCommande}"
                                 FontAttributes="Bold"
-                                FontSize="30"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="Historique"
-                                TextColor="White"
-                                VerticalOptions="CenterAndExpand" />
-                            <Image
-                                HeightRequest="25"
-                                HorizontalOptions="End"
-                                Source="logout.png"
-                                WidthRequest="25">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Logout_Clicked" />
-                                </Image.GestureRecognizers>
-                            </Image>
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Appliquer"
+                                TextColor="#646aa6"
+                                VerticalOptions="EndAndExpand" />
+                            <Button
+                                BackgroundColor="Transparent"
+                                Command="{Binding CancelFilterCommande}"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="EndAndExpand"
+                                Text="Annuler"
+                                TextColor="#edd882"
+                                VerticalOptions="EndAndExpand" />
                         </StackLayout>
-                    </Frame>
+                    </StackLayout>
                 </StackLayout>
-
-                <StackLayout x:Name="Content" Margin="10,20">
+            </Frame>
+            <!--#endregion-->
+            <!--#region Erreur message-->
+            <StackLayout
+                x:Name="RefreshBtn"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding RefreshBtnVisible}"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+                <Button
+                    BackgroundColor="Transparent"
+                    Command="{Binding RefreshCommand}"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Cliquez ici pour actualiser"
+                    TextColor="#646aa6"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!--#endregion-->
+            <ScrollView IsVisible="{Binding ContentVisible}">
+                <StackLayout x:Name="Content" Margin="10">
                     <!--<Picker
                         x:Name="picker"
                         Title="Nombre de demande"
@@ -94,121 +209,183 @@
                                     BackgroundColor="White"
                                     CornerRadius="6"
                                     HasShadow="False">
-                                    <StackLayout Orientation="Horizontal" Spacing="0">
-                                        <BoxView
-                                            Margin="-2,10,0,0"
-                                            BackgroundColor="{Binding statutRef.statutColor}"
-                                            HeightRequest="60"
-                                            VerticalOptions="Start"
-                                            WidthRequest="4" />
-                                        <Frame
-                                            Padding="5"
-                                            CornerRadius="8"
-                                            HasShadow="False"
-                                            HorizontalOptions="FillAndExpand">
-                                            <StackLayout VerticalOptions="Center">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Grid
-                                                        Margin="5"
-                                                        BackgroundColor="White"
-                                                        HorizontalOptions="FillAndExpand">
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <ScrollView
-                                                            Grid.Column="0"
-                                                            Margin="0,0,5,0"
-                                                            BackgroundColor="Transparent"
-                                                            HorizontalScrollBarVisibility="Always"
-                                                            Orientation="Horizontal">
+                                    <StackLayout Spacing="0">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="Item_Tapped" />
+                                            </StackLayout.GestureRecognizers>
+                                            <BoxView
+                                                Margin="0,10,0,0"
+                                                BackgroundColor="{Binding statutRef.statutColor}"
+                                                HeightRequest="60"
+                                                VerticalOptions="Start"
+                                                WidthRequest="4" />
+                                            <Frame
+                                                Padding="5"
+                                                BackgroundColor="White"
+                                                CornerRadius="8"
+                                                HasShadow="False"
+                                                HorizontalOptions="FillAndExpand">
+                                                <StackLayout VerticalOptions="Center">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Grid
+                                                            Margin="5"
+                                                            BackgroundColor="White"
+                                                            HorizontalOptions="FillAndExpand">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <!--<ScrollView
+                                                                Grid.Column="0"
+                                                                Margin="0,0,5,0"
+                                                                BackgroundColor="Transparent"
+                                                                HorizontalScrollBarVisibility="Never"
+                                                                Orientation="Horizontal">
+                                                                <StackLayout
+                                                                    BindableLayout.ItemsSource="{Binding demandePrix}"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    Orientation="Horizontal">
+                                                                    <BindableLayout.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <StackLayout Orientation="Horizontal">
+                                                                                <StackLayout
+                                                                                    Padding="5"
+                                                                                    BackgroundColor="Transparent"
+                                                                                    HorizontalOptions="FillAndExpand">
+                                                                                    <Label
+                                                                                        FontAttributes="Bold"
+                                                                                        FontSize="18"
+                                                                                        Text="{Binding nom, StringFormat='{0}'}"
+                                                                                        TextColor="#AD118E" />
+                                                                                    <Label
+                                                                                        FontAttributes="Bold"
+                                                                                        FontSize="16"
+                                                                                        Text="{Binding montant, StringFormat='{0} DH / L'}"
+                                                                                        TextColor="Black" />
+                                                                                </StackLayout>
+                                                                            </StackLayout>
+                                                                        </DataTemplate>
+                                                                    </BindableLayout.ItemTemplate>
+                                                                </StackLayout>
+                                                            </ScrollView>-->
                                                             <StackLayout
-                                                                BindableLayout.ItemsSource="{Binding demandePrix}"
+                                                                Grid.Column="0"
+                                                                BackgroundColor="White"
+                                                                Orientation="Vertical"
+                                                                Spacing="5">
+                                                                <StackLayout
+                                                                    BackgroundColor="White"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    Spacing="0">
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="16"
+                                                                        Text="Date d'application"
+                                                                        TextColor="#646aa6" />
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="16"
+                                                                        Text="{Binding dateapplication, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
+                                                                        TextColor="Black" />
+                                                                </StackLayout>
+                                                                <StackLayout
+                                                                    BackgroundColor="White"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    Spacing="0">
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="16"
+                                                                        Text="Date de saisie"
+                                                                        TextColor="#646aa6" />
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="16"
+                                                                        Text="{Binding datesaisie, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
+                                                                        TextColor="Black" />
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
+                                                                <Frame
+                                                                    Padding="15"
+                                                                    BackgroundColor="{Binding statutRef.statutColor}"
+                                                                    CornerRadius="6"
+                                                                    HasShadow="False"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    VerticalOptions="CenterAndExpand"
+                                                                    WidthRequest="100">
+                                                                    <Label
+                                                                        Margin="0,0,5,0"
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="18"
+                                                                        HorizontalOptions="CenterAndExpand"
+                                                                        HorizontalTextAlignment="Center"
+                                                                        LineBreakMode="TailTruncation"
+                                                                        MaxLines="2"
+                                                                        Text="{Binding statutRef.statutNom}"
+                                                                        TextColor="White"
+                                                                        VerticalOptions="Center" />
+                                                                </Frame>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </StackLayout>
+
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                        <StackLayout Margin="10,0,10,10" IsVisible="{Binding DetailsColapse}">
+                                            <Frame
+                                                Padding="5"
+                                                BackgroundColor="#f0f0f0"
+                                                HasShadow="False"
+                                                VerticalOptions="FillAndExpand">
+                                                <StackLayout
+                                                    Padding="5"
+                                                    BindableLayout.ItemsSource="{Binding demandePrix}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Orientation="Vertical"
+                                                    Spacing="2">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackLayout
+                                                                BackgroundColor="Transparent"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 Orientation="Horizontal">
-                                                                <BindableLayout.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <StackLayout Orientation="Horizontal">
-                                                                            <StackLayout
-                                                                                Padding="5"
-                                                                                BackgroundColor="Transparent"
-                                                                                HorizontalOptions="FillAndExpand">
-                                                                                <Label
-                                                                                    FontAttributes="Bold"
-                                                                                    FontSize="18"
-                                                                                    Text="{Binding nom, StringFormat='{0}'}"
-                                                                                    TextColor="#AD118E" />
-                                                                                <Label
-                                                                                    FontAttributes="Bold"
-                                                                                    FontSize="16"
-                                                                                    Text="{Binding montant, StringFormat='{0} DH / L'}"
-                                                                                    TextColor="Black" />
-                                                                            </StackLayout>
-                                                                        </StackLayout>
-                                                                    </DataTemplate>
-                                                                </BindableLayout.ItemTemplate>
-                                                            </StackLayout>
-                                                        </ScrollView>
-                                                        <StackLayout
-                                                            Grid.Column="1"
-                                                            HorizontalOptions="FillAndExpand"
-                                                            VerticalOptions="Center">
-                                                            <Frame
-                                                                Padding="10"
-                                                                BackgroundColor="{Binding statutRef.statutColor}"
-                                                                CornerRadius="6"
-                                                                HasShadow="False"
-                                                                HorizontalOptions="EndAndExpand"
-                                                                WidthRequest="100">
                                                                 <Label
-                                                                    Margin="0,0,5,0"
                                                                     FontAttributes="Bold"
                                                                     FontSize="18"
-                                                                    HorizontalOptions="CenterAndExpand"
-                                                                    HorizontalTextAlignment="Center"
-                                                                    LineBreakMode="TailTruncation"
-                                                                    MaxLines="2"
-                                                                    Text="{Binding statutRef.statutNom}"
-                                                                    TextColor="White" />
-                                                            </Frame>
-                                                        </StackLayout>
-                                                    </Grid>
-                                                </StackLayout>
+                                                                    Text="{Binding nom, StringFormat='{0} : '}"
+                                                                    TextColor="#AD118E"
+                                                                    VerticalOptions="Center" />
 
-                                                <StackLayout Orientation="Horizontal">
-                                                    <StackLayout
-                                                        Padding="5"
-                                                        BackgroundColor="White"
-                                                        HorizontalOptions="FillAndExpand">
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            FontSize="18"
-                                                            Text="Date d'application"
-                                                            TextColor="#646aa6" />
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            FontSize="16"
-                                                            Text="{Binding dateapplication, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
-                                                            TextColor="Black" />
-                                                    </StackLayout>
-                                                    <StackLayout
-                                                        Padding="5"
-                                                        BackgroundColor="White"
-                                                        HorizontalOptions="FillAndExpand">
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            FontSize="18"
-                                                            Text="Date de saisie"
-                                                            TextColor="#646aa6" />
-                                                        <Label
-                                                            FontAttributes="Bold"
-                                                            FontSize="16"
-                                                            Text="{Binding datesaisie, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
-                                                            TextColor="Black" />
-                                                    </StackLayout>
+                                                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                                                    <Frame
+                                                                        Padding="15,5"
+                                                                        BackgroundColor="#ff3b79"
+                                                                        CornerRadius="5"
+                                                                        HasShadow="False">
+                                                                        <Label
+                                                                            FontAttributes="Bold"
+                                                                            FontSize="16"
+                                                                            HorizontalOptions="Center"
+                                                                            Text="{Binding montant}"
+                                                                            TextColor="White"
+                                                                            VerticalOptions="Center" />
+                                                                    </Frame>
+                                                                    <Label
+                                                                        FontAttributes="Bold"
+                                                                        FontSize="16"
+                                                                        Text="DH / L"
+                                                                        TextColor="Black"
+                                                                        VerticalOptions="Center" />
+                                                                </StackLayout>
+
+                                                            </StackLayout>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </Frame>
+                                            </Frame>
+                                        </StackLayout>
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>
@@ -216,16 +393,17 @@
                     </StackLayout>
                     <Button
                         x:Name="LoadMoreBtn"
+                        Margin="0,10"
                         BackgroundColor="#96C11F"
                         Command="{Binding LoadMoreCommande}"
                         CornerRadius="8"
                         FontAttributes="Bold"
                         FontSize="18"
                         HorizontalOptions="FillAndExpand"
-                        Text="load more!"
+                        Text="charger plus"
                         TextColor="White" />
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </Page:BasePage>

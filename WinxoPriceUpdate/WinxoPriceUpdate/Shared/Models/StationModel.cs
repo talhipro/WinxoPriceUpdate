@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using PropertyChanged;
+using System.Collections.Generic;
 
 namespace WinxoPriceUpdate.Shared.Models
 {
+    [AddINotifyPropertyChangedInterface]
     public class StationModel
     {
         public string id { get; set; }

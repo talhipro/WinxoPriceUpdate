@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "message": null,
+  "data": [
+    {
+      "id": 1,
+      "type": "G",
+      "nom": "Gasoil 10"
+    },
+    {
+      "id": 2,
+      "type": "S",
+      "nom": "Super SP"
+    },
+    {
+      "id": 3,
+      "type": "E",
+      "nom": "Essence"
+    }
+  ]
+}
